@@ -2,26 +2,80 @@ name: Morning Brief
 
 on:
   schedule:
-    - cron: "0 22 * * *"
+    - cron: "0 22 * * *"   # Primary — 07:00 KST
+    - cron: "0 23 * * *"   # Backup  — 08:00 KST
   workflow_dispatch:
+
+concurrency:
+  group: morning-brief
+  cancel-in-progress: false
 
 jobs:
   send:
     runs-on: ubuntu-22.04
+    permissions:
+      actions: read
     steps:
+      - name: Check if already sent today
+        id: gate
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "already_sent=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          TODAY=$(date -u +"%Y-%m-%d")
+          SENT=$(gh run list --repo ${{ github.repository }} \
+            --workflow morning-brief.yml \
+            --status success \
+            --json createdAt \
+            --limit 20 | python3 -c "
+          import json, sys
+          runs = json.load(sys.stdin)
+          today = '$TODAY'
+          print('true' if any(r['createdAt'].startswith(today) for r in runs) else 'false')
+          ")
+          echo "already_sent=$SENT" >> $GITHUB_OUTPUT
+          echo "Already sent today: $SENT"
+
       - uses: actions/checkout@v4
+        if: steps.gate.outputs.already_sent != 'true'
 
       - uses: actions/setup-python@v5
+        if: steps.gate.outputs.already_sent != 'true'
         with:
           python-version: "3.12"
 
       - name: Install dependencies
+        if: steps.gate.outputs.already_sent != 'true'
         run: pip install -r requirements.txt
 
       - name: Run Morning Brief
+        if: steps.gate.outputs.already_sent != 'true'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
         run: python main.py
+
+      - name: Notify on failure
+        if: failure()
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+        run: |
+          python3 -c "
+          import os, smtplib
+          from email.mime.text import MIMEText
+          msg = MIMEText('<p style=\"font-family:sans-serif;color:#333\">Morning Brief 발송에 실패했습니다.<br><a href=\"https://github.com/$GITHUB_REPOSITORY/actions\">Actions 로그 확인 →</a></p>', 'html', 'utf-8')
+          msg['Subject'] = '⚠ Morning Brief 발송 실패'
+          msg['From'] = os.environ['GMAIL_USER']
+          msg['To'] = os.environ['EMAIL_TO']
+          with smtplib.SMTP('smtp.gmail.com', 587, timeout=30) as s:
+              s.ehlo(); s.starttls()
+              s.login(os.environ['GMAIL_USER'], os.environ['GMAIL_APP_PASSWORD'])
+              s.send_message(msg)
+          "

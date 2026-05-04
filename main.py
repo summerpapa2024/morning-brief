@@ -331,7 +331,7 @@ def summarize(theme: str, items: list[dict]) -> tuple[list[tuple[str, str]], str
 # Emailer
 # ---------------------------------------------------------------------------
 
-def send_email(subject: str, html_body: str, is_confirmation: bool = False) -> bool:
+def send_email(subject: str, html_body: str) -> bool:
     global _sent_count
     if _sent_count >= SEND_LIMIT:
         log.warning("Send limit (%d) reached — skipping", SEND_LIMIT)
@@ -397,9 +397,6 @@ def main():
     ok = send_email(subject, html)
 
     if ok:
-        # confirmation email
-        confirm_html = f"<p style='font-family:sans-serif;color:#555'>Brief delivered at <b>{delivery_time} KST</b> on {date_str}.</p>"
-        send_email(f"✓ Morning Brief sent — {now_kst.strftime('%b ' + day_fmt)}", confirm_html, is_confirmation=True)
         log.info("Done.")
     else:
         log.error("Brief failed to send.")
