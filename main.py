@@ -62,10 +62,10 @@ FEEDS = {
         "https://venturebeat.com/category/ai/feed/",
     ],
     "🌏 K뷰티 해외진출·수출": [
-        "https://www.beautynury.com/rss",                                 # 뷰티누리
-        "https://www.cosinkorea.com/rss",                                 # 코스인
-        "https://platum.kr/feed",                                         # 플래텀 — 뷰티 스타트업 포함
-        "https://biz.chosun.com/site/data/rss/rss.xml",                  # 조선비즈
+        "https://www.yna.co.kr/rss/economy.xml",                          # 연합뉴스 경제 — 수출 통계 포함
+        "https://www.hankyung.com/feed/economy",                          # 한국경제
+        "https://www.mk.co.kr/rss/30000001/",                             # 매일경제
+        "https://www.cosmeticsdesign.com/rss/feed",                       # CosmeticsDesign — 글로벌서 본 K뷰티
     ],
     "💄 국내 뷰티·코스메틱": [
         "https://www.beautynury.com/rss",                                 # 뷰티누리
@@ -92,9 +92,12 @@ THEME_FOCUS = {
         "제품 리뷰나 뷰티 팁 같은 라이프스타일 기사는 제외하세요."
     ),
     "🌏 K뷰티 해외진출·수출": (
-        "K뷰티·코스메틱 브랜드 및 스타트업의 해외 진출, 수출 실적, 해외 법인·팝업 설립, "
-        "글로벌 유통사 입점, 외국 바이어·투자자 유치, 미국·유럽·동남아 시장 반응에 집중하세요. "
-        "국내 내수 소식이나 일반 스타트업 투자 기사는 제외하세요."
+        "반드시 원문에 실제로 등장하는 기사만 선택하세요. 내용을 추론하거나 창작하지 마세요. "
+        "한국 화장품·뷰티 브랜드(Amorepacific, LG생활건강, 올리브영, 코스알엑스, 토니모리 등)의 "
+        "해외 진출, 수출 실적·통계, 글로벌 유통사 입점, 해외 팝업·법인 설립, "
+        "미국·유럽·동남아·중동 시장에서의 K뷰티 반응에 집중하세요. "
+        "국내 내수 동향, 일반 경제 지표, 관련 없는 산업 기사는 제외하세요. "
+        "관련 기사가 5개에 못 미치면 실제로 있는 기사만 작성하세요."
     ),
     "💄 국내 뷰티·코스메틱": (
         "국내 화장품·뷰티 브랜드의 국내 시장 동향, 신제품 전략, 올리브영·무신사 등 유통 채널 변화, "
