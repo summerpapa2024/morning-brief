@@ -43,13 +43,13 @@ GMAIL_APP_PASSWORD = os.environ["GMAIL_APP_PASSWORD"]
 EMAIL_TO = os.environ.get("EMAIL_TO", GMAIL_USER)
 
 FEEDS = {
-    "🌍 국제 정치·경제": [
-        "http://feeds.bbci.co.uk/news/world/rss.xml",
+    "🌍 국제 경제·시장": [
         "http://feeds.bbci.co.uk/news/business/rss.xml",
-        "https://feeds.reuters.com/reuters/worldNews",
         "https://feeds.reuters.com/reuters/businessNews",
+        "https://feeds.reuters.com/reuters/worldNews",
+        "http://feeds.bbci.co.uk/news/world/rss.xml",
     ],
-    "💄 뷰티·패션 시장": [
+    "💄 글로벌 뷰티·패션": [
         "https://wwd.com/feed/",                                          # WWD — 패션+뷰티 비즈니스
         "https://www.glossy.co/feed",                                     # Glossy — 뷰티·패션 시장 분석
         "https://www.cosmeticsdesign.com/rss/feed",                       # CosmeticsDesign — 원료·시장
@@ -61,43 +61,47 @@ FEEDS = {
         "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
         "https://venturebeat.com/category/ai/feed/",
     ],
-    "🇰🇷 국내 정치·사회": [
-        "https://www.yna.co.kr/rss/politics.xml",                         # 연합뉴스 정치
-        "https://www.yna.co.kr/rss/society.xml",                          # 연합뉴스 사회
-        "https://news.kbs.co.kr/rss/rss.do",                              # KBS 뉴스
-        "https://rss.joins.com/joins_news_list.xml",                      # 중앙일보
-    ],
-    "📈 국내 경제·금융": [
-        "https://www.yna.co.kr/rss/economy.xml",                          # 연합뉴스 경제
-        "https://www.hankyung.com/feed/economy",                          # 한국경제
-        "https://www.mk.co.kr/rss/30000001/",                             # 매일경제
+    "🚀 국내 스타트업·벤처": [
+        "https://platum.kr/feed",                                         # 플래텀 — 스타트업 전문
+        "https://www.venturesquare.net/feed",                             # 벤처스퀘어
+        "https://www.bloter.net/feed",                                    # 블로터 — IT/스타트업
         "https://biz.chosun.com/site/data/rss/rss.xml",                  # 조선비즈
     ],
-    "🏢 국내 기업·산업": [
+    "💄 국내 뷰티·코스메틱": [
+        "https://www.beautynury.com/rss",                                 # 뷰티누리
+        "https://www.dailycosmetic.com/rss",                              # 데일리코스메틱
+        "https://www.cosinkorea.com/rss",                                 # 코스인
         "https://www.yna.co.kr/rss/industry.xml",                         # 연합뉴스 산업
-        "https://www.hankyung.com/feed/industry",                         # 한국경제 산업
-        "https://www.mk.co.kr/rss/50200011/",                             # 매일경제 기업
+    ],
+    "🖥 국내 테크·IT 산업": [
+        "https://zdnet.co.kr/rss/feed.xml",                               # ZDNet Korea
         "https://www.etnews.com/rss/section/001",                         # 전자신문
+        "https://it.chosun.com/site/data/rss/rss.xml",                   # IT조선
+        "https://www.hankyung.com/feed/it",                               # 한국경제 IT
     ],
 }
 
 # Per-theme focus instructions appended to the GPT user prompt
 THEME_FOCUS = {
-    "💄 뷰티·패션 시장": (
+    "🌍 국제 경제·시장": (
+        "글로벌 경제 지표, 무역, 금융 시장, 기업 실적, 산업 동향에 집중하세요. "
+        "단순 정치 일정이나 외교 뉴스보다 경제·비즈니스 영향이 있는 사건을 우선하세요."
+    ),
+    "💄 글로벌 뷰티·패션": (
         "화장품·패션 브랜드의 시장 동향, M&A, 실적, 소비자 트렌드, 유통 채널 변화에 집중하세요. "
         "제품 리뷰나 뷰티 팁 같은 라이프스타일 기사는 제외하세요."
     ),
-    "🇰🇷 국내 정치·사회": (
-        "국내 주요 정치 현안, 정책, 입법, 사회 이슈에 집중하세요. "
-        "연예·스포츠 관련 기사는 제외하세요."
+    "🚀 국내 스타트업·벤처": (
+        "국내 스타트업의 투자 유치, 시리즈 라운드, 신규 서비스 출시, 성장 지표, 해외 진출, "
+        "M&A, 폐업·피벗 소식에 집중하세요. 대기업 뉴스는 스타트업과 직접 연관될 때만 포함하세요."
     ),
-    "📈 국내 경제·금융": (
-        "국내 경제 지표, 금융 시장, 금리, 환율, 부동산, 물가, 소비 동향에 집중하세요. "
-        "단순 주가 나열이나 종목 추천 기사는 제외하세요."
+    "💄 국내 뷰티·코스메틱": (
+        "국내 화장품·뷰티 브랜드의 시장 동향, 신제품 전략, 유통 변화, 수출 실적, "
+        "올리브영·무신사 등 플랫폼 동향, 뷰티테크 스타트업 소식에 집중하세요."
     ),
-    "🏢 국내 기업·산업": (
-        "국내 주요 기업의 실적, 투자, M&A, 인사, 신사업, 산업 구조 변화에 집중하세요. "
-        "단순 제품 출시 홍보성 기사는 제외하세요."
+    "🖥 국내 테크·IT 산업": (
+        "국내 IT·반도체·게임·플랫폼 기업의 산업 동향, 투자, 신사업, 규제 이슈에 집중하세요. "
+        "단순 제품 스펙 소개나 가격 기사는 제외하세요."
     ),
 }
 
