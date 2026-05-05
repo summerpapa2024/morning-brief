@@ -61,17 +61,11 @@ FEEDS = {
         "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
         "https://venturebeat.com/category/ai/feed/",
     ],
-    "🌏 K뷰티 해외진출·수출": [
-        "https://www.yna.co.kr/rss/economy.xml",                          # 연합뉴스 경제 — 수출 통계 포함
-        "https://www.hankyung.com/feed/economy",                          # 한국경제
-        "https://www.mk.co.kr/rss/30000001/",                             # 매일경제
-        "https://www.cosmeticsdesign.com/rss/feed",                       # CosmeticsDesign — 글로벌서 본 K뷰티
-    ],
-    "💄 국내 뷰티·코스메틱": [
-        "https://www.beautynury.com/rss",                                 # 뷰티누리
-        "https://www.dailycosmetic.com/rss",                              # 데일리코스메틱
-        "https://www.cosinkorea.com/rss",                                 # 코스인
+    "💄 K뷰티·국내 코스메틱": [
+        "https://www.yna.co.kr/rss/economy.xml",                          # 연합뉴스 경제 — 수출·산업 포함
         "https://www.yna.co.kr/rss/industry.xml",                         # 연합뉴스 산업
+        "https://www.hankyung.com/feed/economy",                          # 한국경제
+        "https://www.cosmeticsdesign.com/rss/feed",                       # CosmeticsDesign — 글로벌서 본 K뷰티
     ],
     "🖥 국내 테크·IT 산업": [
         "https://zdnet.co.kr/rss/feed.xml",                               # ZDNet Korea
@@ -91,17 +85,12 @@ THEME_FOCUS = {
         "화장품·패션 브랜드의 시장 동향, M&A, 실적, 소비자 트렌드, 유통 채널 변화에 집중하세요. "
         "제품 리뷰나 뷰티 팁 같은 라이프스타일 기사는 제외하세요."
     ),
-    "🌏 K뷰티 해외진출·수출": (
+    "💄 K뷰티·국내 코스메틱": (
         "반드시 원문에 실제로 등장하는 기사만 선택하세요. 내용을 추론하거나 창작하지 마세요. "
-        "한국 화장품·뷰티 브랜드(Amorepacific, LG생활건강, 올리브영, 코스알엑스, 토니모리 등)의 "
-        "해외 진출, 수출 실적·통계, 글로벌 유통사 입점, 해외 팝업·법인 설립, "
-        "미국·유럽·동남아·중동 시장에서의 K뷰티 반응에 집중하세요. "
-        "국내 내수 동향, 일반 경제 지표, 관련 없는 산업 기사는 제외하세요. "
-        "관련 기사가 5개에 못 미치면 실제로 있는 기사만 작성하세요."
-    ),
-    "💄 국내 뷰티·코스메틱": (
-        "국내 화장품·뷰티 브랜드의 국내 시장 동향, 신제품 전략, 올리브영·무신사 등 유통 채널 변화, "
-        "소비자 트렌드, 원료·성분 이슈에 집중하세요. 해외 진출 기사는 제외하세요."
+        "선택 우선순위: "
+        "① K뷰티·한국 화장품 브랜드의 해외 진출, 수출 실적·통계, 글로벌 유통사 입점, 해외 팝업·법인 설립, 미국·유럽·동남아 시장 반응 "
+        "② 위 기사가 부족하면 올리브영·무신사 등 유통 채널 변화, 국내 브랜드 신제품 전략, 소비자 트렌드로 채우세요. "
+        "뷰티와 무관한 일반 경제·산업 기사는 제외하세요."
     ),
     "🖥 국내 테크·IT 산업": (
         "국내 IT·반도체·게임·플랫폼 기업의 산업 동향, 투자, 신사업, 규제 이슈에 집중하세요. "
