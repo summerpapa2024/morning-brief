@@ -61,6 +61,24 @@ FEEDS = {
         "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
         "https://venturebeat.com/category/ai/feed/",
     ],
+    "🇰🇷 국내 정치·사회": [
+        "https://www.yna.co.kr/rss/politics.xml",                         # 연합뉴스 정치
+        "https://www.yna.co.kr/rss/society.xml",                          # 연합뉴스 사회
+        "https://news.kbs.co.kr/rss/rss.do",                              # KBS 뉴스
+        "https://rss.joins.com/joins_news_list.xml",                      # 중앙일보
+    ],
+    "📈 국내 경제·금융": [
+        "https://www.yna.co.kr/rss/economy.xml",                          # 연합뉴스 경제
+        "https://www.hankyung.com/feed/economy",                          # 한국경제
+        "https://www.mk.co.kr/rss/30000001/",                             # 매일경제
+        "https://biz.chosun.com/site/data/rss/rss.xml",                  # 조선비즈
+    ],
+    "🏢 국내 기업·산업": [
+        "https://www.yna.co.kr/rss/industry.xml",                         # 연합뉴스 산업
+        "https://www.hankyung.com/feed/industry",                         # 한국경제 산업
+        "https://www.mk.co.kr/rss/50200011/",                             # 매일경제 기업
+        "https://www.etnews.com/rss/section/001",                         # 전자신문
+    ],
 }
 
 # Per-theme focus instructions appended to the GPT user prompt
@@ -68,6 +86,18 @@ THEME_FOCUS = {
     "💄 뷰티·패션 시장": (
         "화장품·패션 브랜드의 시장 동향, M&A, 실적, 소비자 트렌드, 유통 채널 변화에 집중하세요. "
         "제품 리뷰나 뷰티 팁 같은 라이프스타일 기사는 제외하세요."
+    ),
+    "🇰🇷 국내 정치·사회": (
+        "국내 주요 정치 현안, 정책, 입법, 사회 이슈에 집중하세요. "
+        "연예·스포츠 관련 기사는 제외하세요."
+    ),
+    "📈 국내 경제·금융": (
+        "국내 경제 지표, 금융 시장, 금리, 환율, 부동산, 물가, 소비 동향에 집중하세요. "
+        "단순 주가 나열이나 종목 추천 기사는 제외하세요."
+    ),
+    "🏢 국내 기업·산업": (
+        "국내 주요 기업의 실적, 투자, M&A, 인사, 신사업, 산업 구조 변화에 집중하세요. "
+        "단순 제품 출시 홍보성 기사는 제외하세요."
     ),
 }
 
